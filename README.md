@@ -64,14 +64,14 @@
 * \\$ $
 * \xab  ascii 编码
 * \uabcd unicode 编码
-*  \i{start_end} 整数范围，start， end 都包括（相当于闭区间）
+*  \i{start,end} 整数范围，start， end 都包括（相当于闭区间）
 *  \h{pa1,pa2}  扩展功能，调用者hook， pa1  pa2 为 hook 的参数
 *  (?:exp)  不捕获的括号
 *  (?=exp) 向前看
 *  (?!exp) 向前看取反
 *  (?<=exp) 向后看
 *  (?<!exp) 向后看取反
-* <start,end> 相当于 \i{start, end}
+* <start_end> 相当于 \i{start, end}
 * \<abc\>  引用一个名称为 abc的正则。当编译单个Pike vm时，需要提供一个ExpFactory，查询该正则的定义。编译正则集合时， 引用的正则必须出现在前面
   
     >      如果 abc = all, 代表引用所有名称不以 _ 开头的正则
