@@ -98,18 +98,18 @@ public class Range implements Comparable<Range> {
 
     public static List<Range> compact(TreeSet<Range> charRanges) {
         List<Range> ranges = new ArrayList<>();
-        boolean hasAnly = false;
+        boolean hasAny = false;
         int lastStart = -1;
         int lastEnd = -1;
         for (Range r : charRanges) {
             if (r.getStart() < 0) {
                 ranges.add(r);
                 if (r.getStart() <= PikeVMOpcodes.DOT && r.getEnd() >= PikeVMOpcodes.DOT) {
-                    hasAnly = true;
+                    hasAny = true;
                 }
                 lastStart = r.getEnd() + 1;
                 lastEnd = lastStart;
-            } else if (hasAnly) {
+            } else if (hasAny) {
                 break;
             } else {
                 if (lastEnd < 0) {
@@ -126,7 +126,7 @@ public class Range implements Comparable<Range> {
                 }
             }
         }
-        if (hasAnly == false && lastStart >= 0) {
+        if (hasAny == false && lastStart >= 0) {
             ranges.add(new Range(lastStart, lastEnd));
         }
         return ranges;
