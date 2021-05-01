@@ -64,7 +64,7 @@
 * \$ $
 * \xab  ascii 编码
 * \uabcd unicode 编码
-*  \i{start, end} 整数范围，start， end 都包括（相当于闭区间）
+*  \i{start_end} 整数范围，start， end 都包括（相当于闭区间）
 *  \h{pa1,pa2}  扩展功能，调用者hook， pa1  pa2 为 hook 的参数
 *  (?:exp)  不捕获的括号
 *  (?=exp) 向前看
