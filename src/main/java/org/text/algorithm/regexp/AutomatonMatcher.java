@@ -9,8 +9,8 @@
    details. */
 package org.text.algorithm.regexp;
 
+import org.text.algorithm.regexp.fsm.Range;
 import org.text.algorithm.regexp.vm.PikeVM;
-import org.text.algorithm.regexp.vm.PikeVMOpcodes;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -194,7 +194,7 @@ public class AutomatonMatcher {
     }
 
     private void hookBegin(int charPos, int[] table, int transIndex, SimpleSet<IntQuad> nextHooks, SimpleIntSet next) {
-        int index = binSearchKey(table, transIndex, PikeVMOpcodes.HOOK_BEGIN);
+        int index = binSearchKey(table, transIndex, Range.HOOK_BEGIN);
         if (index != -1) {
             //
             List<IntQuad> candiates = getHookCandidate(table[index + 2], charPos);
@@ -335,7 +335,7 @@ public class AutomatonMatcher {
 
     private void hookPendingStateBegin(int charPos, int[] table, int transIndex, SimpleSet<IntQuad> nextHooks, SimpleIntSet next) {
         //HOOK 边为 HOOK_BEGIN
-        int index = binSearchKey(table, transIndex, PikeVMOpcodes.HOOK_BEGIN);
+        int index = binSearchKey(table, transIndex, Range.HOOK_BEGIN);
         if (index != -1) {
             //
             List<IntQuad> candidates = getPengdingStateHookCandidate(table[index + 2], charPos);
@@ -393,8 +393,8 @@ public class AutomatonMatcher {
             next.add(table[index + 2]);
         }
         //我们特殊处理了任意文本，现在将状态加回来
-        //任意文本的边为 PikeVMOpcodes.DOT = -1
-        index = binSearchKey(table, transIndex, PikeVMOpcodes.DOT);
+        //任意文本的边为 RANGE.ANY_CHAR = -1
+        index = binSearchKey(table, transIndex, Range.ANY_CHAR);
         if (index != -1) {
             next.add(table[index + 2]);
         }

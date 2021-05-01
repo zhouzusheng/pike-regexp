@@ -49,6 +49,10 @@ public class Automaton implements SimpleSerializable {
      * 第一个数据 是一个数字，0表示这个节点不是accept的，非0 是一个 count，代表 后面count个数字是accept的 dfa 的id
      * 再后面的数据代表状态的转换边， 是多个三元组
      * 三元组含义： 边的 min, max, 转换到的目标状态
+     * 特殊边
+     *    -1  任意文本
+     *    -36 HOOK_BEGIN
+     *    准备修改一下这两个值
      **/
     private int[][] dfaTables;
 

@@ -18,6 +18,8 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Range implements Comparable<Range> {
+    public static final int ANY_CHAR = -1;
+    public static final int HOOK_BEGIN = -2;
     private final int start;
     private final int end;
 

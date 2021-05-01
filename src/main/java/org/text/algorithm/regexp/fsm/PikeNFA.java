@@ -163,7 +163,7 @@ public class PikeNFA implements PikeVMOpcodes {
                     //后面DFA计算时只考虑DOT
                     //为了控制状态数膨胀，我们不将DOT 展开，效果相当于最终的DFA查询必须特殊处理而与普通的DFA不同
                     int next = pc + 1;
-                    current.transitionState(new Range(DOT), stateList[stateidMap.get(next)]);
+                    current.transitionState(new Range(Range.ANY_CHAR), stateList[stateidMap.get(next)]);
                     if (ids.add(next)) {
                         stack.push(next);
                     }
@@ -258,7 +258,7 @@ public class PikeNFA implements PikeVMOpcodes {
 
                     NFAState nextState = stateList[stateidMap.get(next2)];
 
-                    current.transitionState(new Range(HOOK_BEGIN), middleState);
+                    current.transitionState(new Range(Range.HOOK_BEGIN), middleState);
 
                     middleState.transitionState(new Range(begin), right);
                     right.transitionState(new Range(end), nextState);
