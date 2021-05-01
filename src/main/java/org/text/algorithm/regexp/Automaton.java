@@ -51,8 +51,7 @@ public class Automaton implements SimpleSerializable {
      * 三元组含义： 边的 min, max, 转换到的目标状态
      * 特殊边
      *    -1  任意文本
-     *    -36 HOOK_BEGIN
-     *    准备修改一下这两个值
+     *    -2  HOOK_BEGIN
      **/
     private int[][] dfaTables;
 
